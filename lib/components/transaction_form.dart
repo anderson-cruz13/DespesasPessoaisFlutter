@@ -51,7 +51,6 @@ class _TransactionFormState extends State<TransactionForm> {
   Widget build(BuildContext context) {
 
   final locale = Localizations.maybeLocaleOf(context).toString();
-  print(locale);
   final data = DateFormat('EEE, dd/MM/y', locale).format(_selectedDate);
 
     return Card(
