@@ -1,0 +1,35 @@
+# Flutter/Dart related
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+.idea/
+.vscode/
+.macos/
+.windows/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+**/*.dart.js
+**/*.info.json
+**/*.js
+**/*.map
+# Android related
+.android/
+android
+ios
+linux
+macos
+web
+windows
+appcenter-post-clone.sh
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/local.properties
+android/key.properties
+# Flutter web related
+web/manifest.json
