@@ -53,67 +53,76 @@ class _TransactionFormState extends State<TransactionForm> {
   final locale = Localizations.maybeLocaleOf(context).toString();
   final data = DateFormat('EEE, dd/MM/y', locale).format(_selectedDate);
 
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: _title,
-              onSubmitted: (_) => _submitForm(context),
-              decoration: const InputDecoration(labelText: 'Título'),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10 + MediaQuery.of(context).viewInsets.bottom
             ),
-            TextField(
-              controller: _value,
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (_) => _submitForm(context),
-              decoration: const InputDecoration(
-                labelText: 'Valor (R\$)',
-              ),
-            ),
-            SizedBox(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      children: [
-                        const Text("Data selecionada: ", style: TextStyle(fontWeight: FontWeight.bold),),
-                        Text(data),
-                      ],
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  controller: _title,
+                  onSubmitted: (_) => _submitForm(context),
+                  decoration: const InputDecoration(labelText: 'Título'),
+                ),
+                TextField(
+                  controller: _value,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onSubmitted: (_) => _submitForm(context),
+                  decoration: const InputDecoration(
+                    labelText: 'Valor (R\$)',
+                  ),
+                ),
+                SizedBox(
+                  height: 70,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Text("Data selecionada: ", style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(data),
+                          ],
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: _showDatePicker,
+                        child: Text('Selecionar Data',
+                          style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),),
+                      ),
+                    ]
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => _submitForm(context),
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(Theme.of(context).primaryColor),
+                      ),
+                      child: Text(
+                        'Nova transação',
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.labelLarge!.color,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: _showDatePicker,
-                    child: Text('Selecionar Data',
-                      style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),),
-                  ),
-                ]
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: () => _submitForm(context),
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(Theme.of(context).primaryColor),
-                  ),
-                  child: Text(
-                    'Nova transação',
-                    style: TextStyle(
-                      color: Theme.of(context).textTheme.labelLarge!.color,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
