@@ -136,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[ 
             if(_showChart || !isLandscape)
               SizedBox(
-              height: availableHeight * (isLandscape? 0.7 : 0.25),
+              height: availableHeight * (isLandscape? 1 : 0.25),
               child: Chart(recentTransaction: _recentTransactions,)), 
             if (!_showChart || !isLandscape)
               SizedBox(
