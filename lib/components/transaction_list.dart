@@ -10,7 +10,10 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return transactions.isEmpty ? Column(
+    return transactions.isEmpty 
+    ? LayoutBuilder(
+      builder: (ctx, constraints) {
+      return Column(
       children: <Widget>[
         const SizedBox(height: 30,),
         Text(
@@ -19,14 +22,17 @@ class TransactionList extends StatelessWidget {
         ),
         const SizedBox(height: 30,),
         SizedBox(
-          height: 200,
+          height: constraints.maxHeight * 0.6,
           child: Image.asset(
             'assets\\images\\zzz.png',
             fit: BoxFit.cover
           ),
         ),
       ],
-    ) : ListView.builder(
+    ); 
+      },
+    )
+    : ListView.builder(
       itemCount: transactions.length, // itens limitados por tela
       itemBuilder: (ctx, index) {
         final e = transactions[index];
