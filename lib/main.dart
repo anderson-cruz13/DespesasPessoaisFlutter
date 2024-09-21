@@ -1,9 +1,11 @@
-import 'package:despesas_pessoais/components/transaction_form.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:io';
+import 'package:flutter/material.dart';
 import './components/transaction_list.dart';
 import 'models/transaction.dart';
 import 'components/chart.dart';
+import 'package:despesas_pessoais/components/transaction_form.dart';
+
 
 main() => runApp(const ExpenseApp());
 
@@ -145,7 +147,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Platform.isIOS
+        ? Container()
+        : FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         child: const Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
